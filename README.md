@@ -1,6 +1,6 @@
-### Synapse-specific workflow tools
+# Synapse command line CWL tools
 
-This repository holds CWL tools for retrieving and storing files in Synapse. 
+This repository holds CWL tools for using the Synapse command line client.
 
-#### Available tools
+## Available tools
 * [synapse-get-tool](synapse-get-tool.cwl): get This tool downloads a file from Synapse
