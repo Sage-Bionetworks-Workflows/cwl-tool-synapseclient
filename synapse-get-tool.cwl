@@ -3,7 +3,11 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: python
+baseCommand: synapse
+
+hints:
+  DockerRequirement:
+    dockerPull: sagebionetworks/synapsepythonclient
 
 inputs:
   - id: synapse_config
@@ -11,32 +15,18 @@ inputs:
   - id: synapseid
     type: string
 
-arguments:
-  - valueFrom: download_synapse_file.py
-  - valueFrom: $(inputs.synapseid)
-    prefix: -s
-  - valueFrom: $(inputs.synapse_config.path)
-    prefix: -c
-
 requirements:
-  - class: InlineJavascriptRequirement
-  - class: InitialWorkDirRequirement
+  InitialWorkDirRequirement:
     listing:
-      - entryname: download_synapse_file.py
-        entry: |
-          #!/usr/bin/env python
-          import synapseclient
-          import argparse
-          import os
-          parser = argparse.ArgumentParser()
-          parser.add_argument("-s", "--synapseid", required=True, help="Submission Id")
-          parser.add_argument("-c", "--synapse_config", required=True, help="Credentials file")
-          args = parser.parse_args()
-          syn = synapseclient.Synapse(configPath=args.synapse_config)
-          syn.login()
-          sub = syn.get(args.synapseid, downloadLocation=".")
-          print(sub.path)
+      - entryname: .synapseConfig
+        entry: $(inputs.synapse_config)
+
+arguments:
+  - valueFrom: get
+  - valueFrom: $(inputs.synapseid)
      
 outputs:
   - id: filepath
     type: File
+    outputBinding:
+      glob: '*'
