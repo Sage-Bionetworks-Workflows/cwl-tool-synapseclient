@@ -24,9 +24,9 @@ inputs:
     doc: query
 
 outputs:
-  - id: synapse_fv
+  - id: query_result
     type: stdout
 
-stdout: fileview.tsv
+stdout: query_result.tsv
 
 baseCommand: synapse
