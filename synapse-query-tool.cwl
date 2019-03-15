@@ -12,6 +12,8 @@ requirements:
       - entryname: .synapseConfig
         entry: $(inputs.synapse_config)
 
+baseCommand: synapse
+
 inputs:
   synapse_config:
     type: File
@@ -28,5 +30,3 @@ outputs:
     type: stdout
 
 stdout: query_result.tsv
-
-baseCommand: synapse
