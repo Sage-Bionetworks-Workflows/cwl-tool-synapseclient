@@ -1,7 +1,7 @@
 #!/usr/bin/env cwl-runner
 class: CommandLineTool
-id: get-fv-from-synapse
-label: get-fv-from-synapse
+id: synapse-query-tool
+label: synapse-query-tool
 cwlVersion: v1.0
 
 requirements:
