@@ -13,6 +13,7 @@ requirements:
   listing: $(inputs.scripts)
 - class: DockerRequirement
   dockerPull: amancevice/pandas
+  dockerPull: sgosline/manifest-merge
 
 inputs:
   scripts:
