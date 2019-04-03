@@ -6,18 +6,13 @@ cwlVersion: v1.0
 
 baseCommand:
   - python
-  - join-fileview-by-specimen.py
+  - /usr/local/bin/join-fileview-by-specimen.py
 
 requirements:
-- class: InitialWorkDirRequirement
-  listing: $(inputs.scripts)
 - class: DockerRequirement
-  dockerPull: amancevice/pandas
   dockerPull: sgosline/manifest-merge
 
 inputs:
-  scripts:
-    type: File[]
   filelist:
     type: File[]
     inputBinding:
@@ -34,6 +29,10 @@ inputs:
     type: string
     inputBinding:
       prefix: --parentId
+  key:
+    type: string
+    inputBinding:
+      prefix: --key
   # used:
   #   type: string[]
   #   inputBinding:
