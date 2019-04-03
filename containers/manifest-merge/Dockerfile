@@ -1,4 +1,4 @@
-from amancevice/pandas:0.24.2-alpine
+from amancevice/pandas
 
 RUN pip3 install synapseclient
 RUN pip3 install pandas
