@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-This is a short script that takes a list of specimenIDs and a list of files, and a manifest and matches the manifest to create a new one
+Take a list of metadata values, a list of files, and a csv file and matches the values based on a provided key column in the csv file.
 
 '''
 
