@@ -12,7 +12,7 @@ import os
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser("Merges array of synids with other annotations, adds parent and returns new manifest")
+    parser = argparse.ArgumentParser("Merges list of values with other data from a csv file and returns new csv file.")
 
     parser.add_argument(
             '-m',
