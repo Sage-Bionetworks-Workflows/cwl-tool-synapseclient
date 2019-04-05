@@ -88,4 +88,4 @@ if __name__ == '__main__':
     #join entire dataframe
     full_df=specToSyn.merge(manifest, on=args.key)
 
-    full_df.to_csv('new_manifest.tsv',sep='\t',index=False)
+    full_df.to_csv(sys.stdout,sep='\t',index=False)
