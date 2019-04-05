@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
 
     #add in parent id
-    specToSyn['parent']=args.parentId
+    specToSyn['parent'] = args.parentId
 
     ##add in provenance
     if args.used is not None:
