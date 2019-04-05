@@ -67,7 +67,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if(len(args.values)!=len(args.filelist)):
-        print('specimcenIds and synids need to be the same length')
+        print('keys and list of files need to be the same length')
 
     #read in manifest
     manifest=pandas.read_csv(args.manifest_file,sep='\t')
