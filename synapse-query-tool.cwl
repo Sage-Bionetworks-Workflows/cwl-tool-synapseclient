@@ -6,7 +6,7 @@ cwlVersion: v1.0
 
 requirements:
   - class: DockerRequirement
-    dockerPull: sagebionetworks/synapsepythonclient
+    dockerPull: sagebionetworks/synapsepythonclient:v1.9.2
   - class: InitialWorkDirRequirement
     listing:
       - entryname: .synapseConfig
