@@ -31,7 +31,8 @@ inputs:
     type: string
 
 requirements:
-  InitialWorkDirRequirement:
+  - class: InlineJavascriptRequirement
+  - class: InitialWorkDirRequirement
     listing:
       - entryname: .synapseConfig
         entry: $(inputs.synapse_config)
@@ -49,3 +50,10 @@ outputs:
     type: File
     outputBinding:
       glob: stdout.txt
+
+  - id: file_id
+    type: string
+    outputBinding:
+      glob: stdout.txt
+      loadContents: true
+      outputEval: $(self[0].contents.split("\n")[5].split(/(\s+)/)[4])
