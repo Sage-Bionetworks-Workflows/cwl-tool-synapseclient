@@ -1,7 +1,14 @@
 
 #!/usr/bin/env cwl-runner
-#
-# Authors: Andrew Lamb
+
+$namespaces:
+  s: https://schema.org/
+  edam: http://edamontology.org/
+
+s:author:
+  - class: s:Person
+    s:email: andrew.lamb@sagebase.org
+    s:name: Andrew Lamb
 
 cwlVersion: v1.0
 class: CommandLineTool
@@ -26,8 +33,6 @@ inputs:
   - id: output_file_name
     type: string
     default: "annotations.json"
-    inputBinding:
-      prefix: --output
 
 requirements:
   - class: InlineJavascriptRequirement
@@ -37,6 +42,7 @@ requirements:
         entry: $(inputs.synapse_config)
 
 
+stdout: $(inputs.output_file_name)
      
 outputs:
 

@@ -51,6 +51,19 @@ outputs:
     outputBinding:
       glob: stdout.txt
 
+# stdout from synstore is in this format:
+#
+###################################################
+# Uploading file to Synapse storage 
+###################################################
+#
+#Created/Updated entity: syn18493874     559d86e397be9ba39950b631dd9652148282a575
+#
+#1. Access line 6: "contents.split("\n")[5]"
+#2. Split by whitespace: ".split(/(\s+)/)"
+#3. Access the the 5th item: "[4]"
+
+
   - id: file_id
     type: string
     outputBinding:
