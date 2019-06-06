@@ -10,11 +10,18 @@ cwlVersion: v1.0
 $namespaces:
   dct: http://purl.org/dc/terms/
   foaf: http://xmlns.com/foaf/0.1/
+  s: https://schema.org/
 
 dct:creator:
   "@id": "https://orcid.org/0000-0001-5729-7376"
   foaf:name: Kenneth Daily
   foaf:mbox: "mailto:kenneth.daily@sagebionetworks.org"
+
+s:contributor:
+  - class: s:Person
+    s:identifier: https://orcid.org/0000-0002-0326-7494
+    s:email: andrew.lamb@sagebase.org
+    s:name: Andrew Lamb
 
 baseCommand: synapse
 
