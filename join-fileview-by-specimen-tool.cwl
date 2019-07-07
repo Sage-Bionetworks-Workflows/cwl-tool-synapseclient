@@ -44,6 +44,7 @@ inputs:
 
 outputs:
   newmanifest:
-    type: File
-    outputBinding:
-      glob: '*.tsv'
+    type: stdout
+
+
+stdout: query_result.tsv
