@@ -70,7 +70,7 @@ if __name__ == '__main__':
         print('keys and list of files need to be the same length')
 
     #read in manifest
-    manifest=pandas.read_csv(args.manifest_file,sep='\t')
+    manifest=pandas.read_csv(args.manifest_file,sep='\t',quoting=3)
     manifest=manifest.drop(["ROW_ID","ROW_VERSION","ROW_ETAG"],axis=1)
 
     #join specimens and synids into data frame
