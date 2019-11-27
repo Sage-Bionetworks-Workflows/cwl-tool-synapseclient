@@ -7,7 +7,7 @@ class: CommandLineTool
 
 requirements:
 - class: InitialWorkDirRequirement
-  listing: $(inputs.files)
+  listing: $(inputs.dir)
 
 hints:
   DockerRequirement:
@@ -19,7 +19,7 @@ baseCommand:
 
 inputs:
 
-  files: File[]
+  dir: Directory[]
       
   synapse_config:
     type: File
