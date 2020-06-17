@@ -8,8 +8,6 @@ label: "Synapse command line client subcommand for storing a file."
 cwlVersion: v1.0
 
 $namespaces:
-  dct: http://purl.org/dc/terms/
-  foaf: http://xmlns.com/foaf/0.1/
   s: https://schema.org/
 
 s:author:
