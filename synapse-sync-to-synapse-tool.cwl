@@ -1,6 +1,13 @@
 #!/usr/bin/env cwl-runner
-#
-# Authors: Andrew Lamb
+
+$namespaces:
+  s: https://schema.org/
+
+s:author:
+  - class: s:Person
+    s:identifier: https://orcid.org/0000-0002-0326-7494
+    s:email: andrew.lamb@sagebase.org
+    s:name: Andrew Lamb
 
 cwlVersion: v1.0
 class: CommandLineTool
