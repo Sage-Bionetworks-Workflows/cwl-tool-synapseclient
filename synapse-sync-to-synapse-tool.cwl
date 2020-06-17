@@ -9,6 +9,12 @@ s:author:
     s:email: andrew.lamb@sagebase.org
     s:name: Andrew Lamb
 
+s:contributor:
+  - class: s:Person
+    s:identifier: https://orcid.org/0000-0002-5841-0198
+    s:email: thomas.yu@sagebionetworks.org
+    s:name: Thomas Yu
+
 cwlVersion: v1.0
 class: CommandLineTool
 
@@ -18,25 +24,25 @@ requirements:
 
 hints:
   DockerRequirement:
-    dockerPull: quay.io/andrewelamb/python_synapse_client
+    dockerPull: sagebionetworks/synapsepythonclient:v2.1.0
     
-baseCommand:
-- python3
-- /usr/local/bin/sync_to_synapse.py
-
 inputs:
-
-  files: File[]
-      
-  synapse_config:
+  - id: synapse_config
     type: File
-    inputBinding:
-      prefix: "--synapse_config_file"
-
-  manifest_file:
+  - id: files
+    type: File[]
+  - id: manifest_file
     type: File
-    inputBinding:
-      prefix: "--manifest_file"
 
+requirements:
+  - class: InlineJavascriptRequirement
+  - class: InitialWorkDirRequirement
+    listing:
+      - entryname: .synapseConfig
+        entry: $(inputs.synapse_config)
+
+arguments:
+  - valueFrom: sync
+  - valueFrom: $(inputs.manifest_file.path)
  
 outputs: []
