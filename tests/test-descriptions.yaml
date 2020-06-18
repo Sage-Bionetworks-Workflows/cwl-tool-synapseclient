@@ -54,3 +54,9 @@
   label: synapse_query
   id: 4
   doc: Query a table or file view in Synapse
+- job: sync/sync.yaml
+  output: {}
+  tool: ../cwl/synapse-sync-to-synapse-tool.cwl
+  label: synapse_sync
+  id: 4
+  doc: Sync files into Synapse with a manifest
