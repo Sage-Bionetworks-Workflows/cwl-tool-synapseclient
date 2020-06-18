@@ -11,3 +11,9 @@
   label: synapse_get_annotations
   id: 0
   doc: Get annotations
+- job: set_annotations.yaml
+  output: {}
+  tool: ../cwl/synapse-set-annotations-tool.cwl
+  label: synapse_set_annotations
+  id: 1
+  doc: Set annotations
