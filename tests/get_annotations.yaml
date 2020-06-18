@@ -1,0 +1,4 @@
+synapseid: syn22172371
+synapse_config:
+  class: File
+  path: '/Users/ThomasY/.synapseConfig'

@@ -1,0 +1,13 @@
+- job: get_annotations.yaml
+  output:
+    "annotations_file": {
+      "checksum": "sha1$86e749e7fd60c51240baf91a64845391b7d7e7f7",
+      "class": "File",
+      "location": "annotations.json",
+      "size": 66
+    }
+    "annotations_text": "{\n  \"testing\": [\n    \"mytests\"\n  ],\n  \"wow\": [\n    \"foobar\"\n  ]\n}\n"
+  tool: ../cwl/synapse-get-annotations-tool.cwl
+  label: synapse_get_annotations
+  id: 0
+  doc: Get annotations
