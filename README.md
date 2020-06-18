@@ -2,7 +2,7 @@
 
 # Synapse command line CWL tools
 
-This repository contains versioned CWL tools for the Synapse command line client.
+This repository contains versioned CWL tools for the Synapse command line client.  Other tools that utilize the `synapseclient` should live in other repositories.
 
 ## Dockerfile
 
