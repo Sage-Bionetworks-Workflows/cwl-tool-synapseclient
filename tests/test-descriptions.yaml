@@ -27,7 +27,7 @@
     }
   tool: ../cwl/synapse-get-tool.cwl
   label: synapse_get
-  id: 1
+  id: 2
   doc: Get synapse file
 - job: store/store.yaml
   output:
@@ -40,5 +40,17 @@
     "file_id": "syn22172494"
   tool: ../cwl/synapse-store-tool.cwl
   label: synapse_store
-  id: 1
+  id: 3
   doc: Store file to Synapse
+- job: query.yaml
+  output:
+    "query_result": {
+      "checksum": "sha1$248aa8c77b8db47785651c784c247aec867f28e5",
+      "class": "File",
+      "location": "query_result.tsv",
+      "size": 67
+    }
+  tool: ../cwl/synapse-query-tool.cwl
+  label: synapse_query
+  id: 4
+  doc: Query a table or file view in Synapse

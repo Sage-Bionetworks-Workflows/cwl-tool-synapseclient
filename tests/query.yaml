@@ -1,0 +1,4 @@
+query: 'select * from syn22172530'
+synapse_config:
+  class: File
+  path: '/tmp/.synapseConfig'
