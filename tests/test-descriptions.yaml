@@ -17,3 +17,15 @@
   label: synapse_set_annotations
   id: 1
   doc: Set annotations
+- job: get.yaml
+  output:
+    "filepath": {
+      "checksum": "sha1$393c6031d204f759a245471cdc547c29b42f0cb2",
+      "class": "File",
+      "location": "test.txt",
+      "size": 9
+    }
+  tool: ../cwl/synapse-get-tool.cwl
+  label: synapse_get
+  id: 1
+  doc: Get synapse file
