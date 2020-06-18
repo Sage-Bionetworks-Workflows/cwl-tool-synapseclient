@@ -1,0 +1,6 @@
+
+##################################################
+ Uploading file to Synapse storage 
+##################################################
+
+Created/Updated entity: syn22172494	test.txt

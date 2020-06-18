@@ -29,3 +29,16 @@
   label: synapse_get
   id: 1
   doc: Get synapse file
+- job: store/store.yaml
+  output:
+    "stdout": {
+      "checksum": "sha1$804a8d86547df5deb13d99a8899dc83bfadf290c",
+      "class": "File",
+      "location": "stdout.txt",
+      "size": 185
+    }
+    "file_id": "syn22172494"
+  tool: ../cwl/synapse-store-tool.cwl
+  label: synapse_store
+  id: 1
+  doc: Store file to Synapse
