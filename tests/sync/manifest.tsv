@@ -1,0 +1,4 @@
+path	parent	name	synapseStore	contentType	used	executed	activityName	activityDescription
+annotations.json	syn22172557	annotations.json	True	application/json				
+query_result.tsv	syn22172557	query_result.tsv	True	text/tab-separated-values				
+test.csv	syn22172557	test.csv	True	text/csv				

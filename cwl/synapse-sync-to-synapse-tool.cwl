@@ -17,10 +17,7 @@ s:contributor:
 
 cwlVersion: v1.0
 class: CommandLineTool
-
-requirements:
-- class: InitialWorkDirRequirement
-  listing: $(inputs.files)
+baseCommand: synapse
 
 hints:
   DockerRequirement:
@@ -40,9 +37,10 @@ requirements:
     listing:
       - entryname: .synapseConfig
         entry: $(inputs.synapse_config)
+      - $(inputs.files)
 
 arguments:
   - valueFrom: sync
   - valueFrom: $(inputs.manifest_file.path)
- 
+
 outputs: []

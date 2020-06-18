@@ -1,0 +1,62 @@
+- job: get_annotations.yaml
+  output:
+    "annotations_file": {
+      "checksum": "sha1$86e749e7fd60c51240baf91a64845391b7d7e7f7",
+      "class": "File",
+      "location": "annotations.json",
+      "size": 66
+    }
+    "annotations_text": "{\n  \"testing\": [\n    \"mytests\"\n  ],\n  \"wow\": [\n    \"foobar\"\n  ]\n}\n"
+  tool: ../cwl/synapse-get-annotations-tool.cwl
+  label: synapse_get_annotations
+  id: 0
+  doc: Get annotations
+- job: set_annotations.yaml
+  output: {}
+  tool: ../cwl/synapse-set-annotations-tool.cwl
+  label: synapse_set_annotations
+  id: 1
+  doc: Set annotations
+- job: get.yaml
+  output:
+    "filepath": {
+      "checksum": "sha1$393c6031d204f759a245471cdc547c29b42f0cb2",
+      "class": "File",
+      "location": "test.txt",
+      "size": 9
+    }
+  tool: ../cwl/synapse-get-tool.cwl
+  label: synapse_get
+  id: 2
+  doc: Get synapse file
+- job: store/store.yaml
+  output:
+    "stdout": {
+      "checksum": "sha1$804a8d86547df5deb13d99a8899dc83bfadf290c",
+      "class": "File",
+      "location": "stdout.txt",
+      "size": 185
+    }
+    "file_id": "syn22172494"
+  tool: ../cwl/synapse-store-tool.cwl
+  label: synapse_store
+  id: 3
+  doc: Store file to Synapse
+- job: query.yaml
+  output:
+    "query_result": {
+      "checksum": "sha1$248aa8c77b8db47785651c784c247aec867f28e5",
+      "class": "File",
+      "location": "query_result.tsv",
+      "size": 67
+    }
+  tool: ../cwl/synapse-query-tool.cwl
+  label: synapse_query
+  id: 4
+  doc: Query a table or file view in Synapse
+- job: sync/sync.yaml
+  output: {}
+  tool: ../cwl/synapse-sync-to-synapse-tool.cwl
+  label: synapse_sync
+  id: 4
+  doc: Sync files into Synapse with a manifest

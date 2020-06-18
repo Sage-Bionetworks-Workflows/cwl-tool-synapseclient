@@ -1,0 +1,13 @@
+synapse_config:
+  class: File
+  path: '/tmp/.synapseConfig'
+files:
+  - class: File
+    path: 'annotations.json'
+  - class: File
+    path: 'query_result.tsv'
+  - class: File
+    path: 'test.csv'
+manifest_file:
+  class: File
+  path: 'manifest.tsv'
