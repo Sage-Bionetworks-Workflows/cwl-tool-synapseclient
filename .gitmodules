@@ -1,0 +1,3 @@
+[submodule "synapsePythonClient"]
+	path = synapsePythonClient
+	url = https://github.com/Sage-Bionetworks/synapsePythonClient
