@@ -1,0 +1,5 @@
+synapseid: syn22251874
+synapse_config:
+  class: File
+  path: '/tmp/.synapseConfig'
+permission: 'read_only'
