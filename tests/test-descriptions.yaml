@@ -58,5 +58,20 @@
   output: {}
   tool: ../cwl/synapse-sync-to-synapse-tool.cwl
   label: synapse_sync
-  id: 4
+  id: 5
   doc: Sync files into Synapse with a manifest
+- job: get-sts-token.yaml
+  output:
+    "json_out": {
+      "class": "File",
+      "location": "output.json",
+    }
+    # "accesskey_id": "*"
+    # "session_token": "*"
+    # "bucket": "proddata.sagebase.org"
+    # "secret_accesskey": "*"
+    # "basekey": "*"
+  tool: ../cwl/synapse-get-sts-tool.cwl
+  label: synapse_get_sts
+  id: 6
+  doc: Get Synapse STS token
