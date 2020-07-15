@@ -1,6 +1,14 @@
 
 #!/usr/bin/env cwl-runner
 
+cwlVersion: v1.0
+id: "synapse-get-annotations"
+label: "Synapse get annotations tool"
+class: CommandLineTool
+baseCommand:
+  - synapse
+  - get-annotations
+
 $namespaces:
   s: https://schema.org/
 
@@ -9,12 +17,6 @@ s:author:
     s:identifier: https://orcid.org/0000-0002-0326-7494
     s:email: andrew.lamb@sagebase.org
     s:name: Andrew Lamb
-
-cwlVersion: v1.0
-class: CommandLineTool
-baseCommand: 
-  - synapse
-  - get-annotations
 
 hints:
   DockerRequirement:

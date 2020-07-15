@@ -1,5 +1,11 @@
 #!/usr/bin/env cwl-runner
-#
+
+class: CommandLineTool
+id: "synapse-store"
+label: "Synapse command line client subcommand for storing a file."
+cwlVersion: v1.0
+baseCommand: synapse
+
 $namespaces:
   s: https://schema.org/
 
@@ -14,13 +20,10 @@ s:contributor:
     s:identifier: https://orcid.org/0000-0002-0326-7494
     s:email: andrew.lamb@sagebase.org
     s:name: Andrew Lamb
-
-class: CommandLineTool
-id: "synapse-store"
-label: "Synapse command line client subcommand for storing a file."
-
-cwlVersion: v1.0
-baseCommand: synapse
+  - class: s:Person
+    s:identifier: https://orcid.org/0000-0002-5841-0198
+    s:email: thomas.yu@sagebase.org
+    s:name: Thomas Yu
 
 hints:
   DockerRequirement:
