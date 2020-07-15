@@ -1,5 +1,11 @@
 #!/usr/bin/env cwl-runner
 
+cwlVersion: v1.0
+id: "sync-to-synapse"
+label: "Sync to Synapse tool"
+class: CommandLineTool
+baseCommand: synapse
+
 $namespaces:
   s: https://schema.org/
 
@@ -14,10 +20,6 @@ s:contributor:
     s:identifier: https://orcid.org/0000-0002-5841-0198
     s:email: thomas.yu@sagebionetworks.org
     s:name: Thomas Yu
-
-cwlVersion: v1.0
-class: CommandLineTool
-baseCommand: synapse
 
 hints:
   DockerRequirement:

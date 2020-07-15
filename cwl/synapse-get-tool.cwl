@@ -1,5 +1,4 @@
 #!/usr/bin/env cwl-runner
-#
 
 cwlVersion: v1.0
 id: "synapse-get"
@@ -8,13 +7,13 @@ class: CommandLineTool
 baseCommand: synapse
 
 $namespaces:
-    dct: http://purl.org/dc/terms/
-    foaf: http://xmlns.com/foaf/0.1/
+  s: https://schema.org/
 
-dct:creator:
-  "@id": "https://orcid.org/0000-0002-5841-0198"
-  foaf:name: Thomas Yu
-  foaf:mbox: "mailto:thomas.yu@sagebionetworks.org"
+s:author:
+  - class: s:Person
+    s:identifier: https://orcid.org/0000-0002-5841-0198
+    s:email: thomas.yu@sagebionetworks.org
+    s:name: Thomas Yu
 
 hints:
   DockerRequirement:
