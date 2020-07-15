@@ -24,6 +24,8 @@ jobs:
         curl -L -o ~/bin/dockstore https://github.com/dockstore/dockstore/releases/download/1.9.0/dockstore
         chmod +x ~/bin/dockstore
         mkdir -p ~/.dockstore
+        export JAVA_HOME=/usr/lib/jvm/openjdk-11-jdk
+        export PATH=$PATH:$JAVA_HOME/bin
         echo `java -version`
         printf "token: ${{secrets.DOCKSTORE_TOKEN}}\nserver-url: https://dockstore.org/api\n" > ~/.dockstore/config
 
