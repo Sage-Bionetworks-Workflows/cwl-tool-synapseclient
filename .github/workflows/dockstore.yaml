@@ -19,7 +19,7 @@ jobs:
 
     - name: Install Dockstore dependencies
       run: |
-        sudo add-apt-repository ppa:openjdk-r/ppa && sudo apt-get update -q && sudo apt install -y openjdk-11-jdk
+        sudo add-apt-repository ppa:openjdk-r/ppa && sudo apt-get update -q && sudo apt-get install -y openjdk-11-jdk openjdk-11-jre
         mkdir -p ~/bin
         curl -L -o ~/bin/dockstore https://github.com/dockstore/dockstore/releases/download/1.9.0/dockstore
         chmod +x ~/bin/dockstore
