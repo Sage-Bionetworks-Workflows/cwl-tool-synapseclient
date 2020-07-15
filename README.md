@@ -67,3 +67,21 @@ If you choose to make this change, for best results we recommend that you also
 use the no-fast-forward flag (`--no-ff`) when merging branches to master. Using
 that flag will ensure that a new merge commit is created, and CI will run
 correctly. Without a new merge commit, versioning won't work correctly.
+
+
+## Publishing on dockstore
+Follow instructions [here](https://dockstore.org/quick-start) on how to set up dockstore.  After setting up the `dockstore` cli, you are now ready to publish your tools.  Here is an example of how this is done.
+
+```
+dockstore tool manual_publish \
+    --name synapsepythonclient \
+    --namespace sagebionetworks \
+    --git-url git@github.com:Sage-Bionetworks-Workflows/dockstore-tool-synapseclient.git \
+    --git-reference master \
+    --cwl-path /cwl/synapse-set-annotations-tool.cwl \
+    --wdl-path '' \
+    --test-cwl-path /tests/set_annotations.yaml \
+    --test-wdl-path '' \
+    --toolname synapse-set-annotations \
+    --version-name master
+```
