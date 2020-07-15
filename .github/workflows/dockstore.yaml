@@ -33,6 +33,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyyaml
         python dockstore.py tests/test-descriptions.yaml \
-        ${GITHUB_REF#refs/heads/} \
+        ${GITHUB_REF#refs/*/} \
         sagebionetworks/synapsepythonclient \
         git@github.com:Sage-Bionetworks-Workflows/dockstore-tool-synapseclient.git

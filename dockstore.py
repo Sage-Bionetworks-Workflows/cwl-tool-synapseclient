@@ -18,6 +18,7 @@ def main(yaml_path, tag, dockerrepo, giturl):
                 (e.g. git@github.com:....git)
 
     """
+    print(tag)
     with open(yaml_path, 'r') as yaml_f:
         tools = yaml.load(yaml_f, Loader=yaml.FullLoader)
 
