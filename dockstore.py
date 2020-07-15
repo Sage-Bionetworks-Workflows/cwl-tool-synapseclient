@@ -57,14 +57,16 @@ def main(yaml_path, tag, dockerrepo, giturl):
         try:
             subprocess.check_call(dockstore_cmd)
             return
-        except Exception:
+        except Exception as err:
+            print(err)
             print("Tool already exists")
             pass
 
         # Updating version tag will fail if tag already exists
         try:
             subprocess.check_call(update_version_cmd)
-        except Exception:
+        except Exception as err:
+            print(err)
             print("Tag already exists")
             pass
 
