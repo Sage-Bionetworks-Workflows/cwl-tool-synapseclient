@@ -1,8 +1,8 @@
 name: Dockstore
 
-on:
-  release:
-    types: [created]
+on: [push]
+  # release:
+  #   types: [created]
 
 jobs:
   deploy:
@@ -20,7 +20,7 @@ jobs:
       with:
         python-version: '3.7'
 
-    - name: Install Dockstore dependencies
+    - name: Install Dockstore
       run: |
         mkdir -p ~/bin
         curl -L -o ~/bin/dockstore https://github.com/dockstore/dockstore/releases/download/1.9.0/dockstore
@@ -32,6 +32,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pyyaml
+
+    - name: Run Dockstore Publish
+      run: |
         export PATH=~/bin:$PATH
         python dockstore.py tests/test-descriptions.yaml \
         ${GITHUB_REF#refs/*/} \
