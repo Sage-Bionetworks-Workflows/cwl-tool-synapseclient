@@ -20,6 +20,7 @@ def main(yaml_path, tag, dockerrepo, giturl):
     """
     with open(yaml_path, 'r') as yaml_f:
         tools = yaml.load(yaml_f, Loader=yaml.FullLoader)
+
     docker_info = dockerrepo.split("/")
     docker_namespace = docker_info[0]
     docker_name = docker_info[1]
@@ -28,6 +29,8 @@ def main(yaml_path, tag, dockerrepo, giturl):
         cwlname = os.path.basename(tool['tool'])
         testname = tool['job']
         toolname = cwlname.replace(".cwl", "").replace("-tool", "")
+
+        # This command is to publish any dockstore tool that doesn't exist yet
         dockstore_cmd = [
             'dockstore', 'tool', 'manual_publish',
             '--namespace', docker_namespace,
@@ -40,7 +43,7 @@ def main(yaml_path, tag, dockerrepo, giturl):
             '--test-wdl-path', '',
             '--toolname', toolname,
         ]
-
+        # If the tool already exists, then just update the version
         update_version_cmd = [
             'dockstore', 'tool', 'version_tag', 'add',
             '--entry',
@@ -49,7 +52,7 @@ def main(yaml_path, tag, dockerrepo, giturl):
             '--git-reference', tag,
             '--image-id', dockerrepo
         ]
-
+        # Publishing tool will fail if tool already exists
         try:
             subprocess.check_call(dockstore_cmd)
             return
@@ -57,6 +60,7 @@ def main(yaml_path, tag, dockerrepo, giturl):
             print("Tool already exists")
             pass
 
+        # Updating version tag will fail if tag already exists
         try:
             subprocess.check_call(update_version_cmd)
         except Exception:
