@@ -28,7 +28,6 @@ jobs:
         mkdir -p ~/.dockstore
         printf "token: 27389149dd692369de0465fcf2b48889e4258f645ffbff727f85e3d82d7ea708\nserver-url: https://dockstore.org/api\n" > ~/.dockstore/config
 
-# ${GITHUB_REF#refs/tags/}
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
