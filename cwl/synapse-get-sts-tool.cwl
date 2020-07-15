@@ -48,37 +48,37 @@ outputs:
   - id: json_out
     type: stdout
 
-#   - id: bucket
-#     type: string
-#     outputBinding:
-#       glob: output.json
-#       loadContents: true
-#       outputEval: $(JSON.parse(self[0].contents)['bucket'])
+  - id: bucket
+    type: string
+    outputBinding:
+      glob: output.json
+      loadContents: true
+      outputEval: $(JSON.parse(self[0].contents)['bucket'])
 
-#   - id: basekey
-#     type: string
-#     outputBinding:
-#       glob: output.json
-#       loadContents: true
-#       outputEval: $(JSON.parse(self[0].contents)['baseKey'])
+  - id: basekey
+    type: string
+    outputBinding:
+      glob: output.json
+      loadContents: true
+      outputEval: $(JSON.parse(self[0].contents)['baseKey'])
 
-#   - id: accesskey_id
-#     type: string
-#     outputBinding:
-#       glob: output.json
-#       loadContents: true
-#       outputEval: $(JSON.parse(self[0].contents)['accessKeyId'])
+  - id: accesskey_id
+    type: string
+    outputBinding:
+      glob: output.json
+      loadContents: true
+      outputEval: $(JSON.parse(self[0].contents)['accessKeyId'])
     
-#   - id: secret_accesskey
-#     type: string
-#     outputBinding:
-#       glob: output.json
-#       loadContents: true
-#       outputEval: $(JSON.parse(self[0].contents)['secretAccessKey'])
+  - id: secret_accesskey
+    type: string
+    outputBinding:
+      glob: output.json
+      loadContents: true
+      outputEval: $(JSON.parse(self[0].contents)['secretAccessKey'])
 
-#   - id: session_token
-#     type: string
-#     outputBinding:
-#       glob: output.json
-#       loadContents: true
-#       outputEval: $(JSON.parse(self[0].contents)['sessionToken'])
+  - id: session_token
+    type: string
+    outputBinding:
+      glob: output.json
+      loadContents: true
+      outputEval: $(JSON.parse(self[0].contents)['sessionToken'])

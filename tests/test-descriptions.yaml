@@ -66,11 +66,11 @@
       "class": "File",
       "location": "output.json",
     }
-    # "accesskey_id": "*"
-    # "session_token": "*"
-    # "bucket": "proddata.sagebase.org"
-    # "secret_accesskey": "*"
-    # "basekey": "*"
+    "accesskey_id": Any
+    "session_token": Any
+    "bucket": "proddata.sagebase.org"
+    "secret_accesskey": Any
+    "basekey": Any
   tool: ../cwl/synapse-get-sts-tool.cwl
   label: synapse_get_sts
   id: 6
