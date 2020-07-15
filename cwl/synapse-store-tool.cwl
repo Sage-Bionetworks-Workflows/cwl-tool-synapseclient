@@ -36,6 +36,12 @@ inputs:
     type: File
   - id: parentid
     type: string
+  - id: name
+    type: string?
+  - id: used
+    type: string[]?
+  - id: executed
+    type: string[]?
 
 requirements:
   - class: InlineJavascriptRequirement
@@ -48,6 +54,12 @@ arguments:
   - valueFrom: store
   - valueFrom: $(inputs.parentid)
     prefix: --parentId
+  - valueFrom: $(inputs.used)
+    prefix: --used
+  - valueFrom: $(inputs.executed)
+    prefix: --executed
+  - valueFrom: $(inputs.name)
+    prefix: --name
   - valueFrom: $(inputs.file_to_store.path)
 
 stdout: stdout.txt
