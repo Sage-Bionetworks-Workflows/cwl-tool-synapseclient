@@ -36,7 +36,7 @@ jobs:
     - name: Run Dockstore Publish
       run: |
         export PATH=~/bin:$PATH
-        python dockstore.py tests/test-descriptions.yaml \
+        python utils/dockstore.py tests/test-descriptions.yaml \
         ${GITHUB_REF#refs/*/} \
         sagebionetworks/synapsepythonclient \
         git@github.com:Sage-Bionetworks-Workflows/dockstore-tool-synapseclient.git
