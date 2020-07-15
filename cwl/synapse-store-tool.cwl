@@ -15,6 +15,12 @@ s:contributor:
     s:email: andrew.lamb@sagebase.org
     s:name: Andrew Lamb
 
+s:contributor:
+  - class: s:Person
+    s:identifier: https://orcid.org/0000-0002-5841-0198
+    s:email: thomas.yu@sagebase.org
+    s:name: Thomas Yu
+
 class: CommandLineTool
 id: "synapse-store"
 label: "Synapse command line client subcommand for storing a file."
