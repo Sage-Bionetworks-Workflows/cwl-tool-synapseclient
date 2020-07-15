@@ -20,8 +20,7 @@ jobs:
     - name: Install Dockstore dependencies
       run: |
         sudo add-apt-repository ppa:openjdk-r/ppa && sudo apt-get update -q && sudo apt install -y openjdk-11-jdk
-        curl -L https://github.com/dockstore/dockstore/releases/download/1.9.0/dockstore
-        chmod +x dockstore
+        curl -L -o dockstore https://github.com/dockstore/dockstore/releases/download/1.9.0/dockstore
         mkdir -p ~/.dockstore
         printf "token: ${{secrets.DOCKSTORE_TOKEN}}\nserver-url: https://dockstore.org/api\n" > ~/.dockstore/config
 
