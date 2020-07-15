@@ -23,9 +23,8 @@ jobs:
         mkdir -p ~/bin
         curl -L -o ~/bin/dockstore https://github.com/dockstore/dockstore/releases/download/1.9.0/dockstore
         chmod +x ~/bin/dockstore
-        echo 'export PATH=~/bin:$PATH' >> ~/.bashrc
-        source ~/.bashrc
         mkdir -p ~/.dockstore
+        echo `java -version`
         printf "token: ${{secrets.DOCKSTORE_TOKEN}}\nserver-url: https://dockstore.org/api\n" > ~/.dockstore/config
 
     - name: Install Python dependencies
