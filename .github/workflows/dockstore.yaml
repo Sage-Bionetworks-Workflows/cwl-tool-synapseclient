@@ -20,7 +20,11 @@ jobs:
     - name: Install Dockstore dependencies
       run: |
         sudo add-apt-repository ppa:openjdk-r/ppa && sudo apt-get update -q && sudo apt install -y openjdk-11-jdk
-        curl -L -o dockstore https://github.com/dockstore/dockstore/releases/download/1.9.0/dockstore
+        mkdir -p ~/bin
+        curl -L -o ~/bin/dockstore https://github.com/dockstore/dockstore/releases/download/1.9.0/dockstore
+        chmod +x ~/bin/dockstore
+        echo 'export PATH=~/bin:$PATH' >> ~/.bashrc
+        source ~/.bashrc
         mkdir -p ~/.dockstore
         printf "token: ${{secrets.DOCKSTORE_TOKEN}}\nserver-url: https://dockstore.org/api\n" > ~/.dockstore/config
 
@@ -28,6 +32,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pyyaml
+        export PATH=~/bin:$PATH
         python dockstore.py tests/test-descriptions.yaml \
         ${GITHUB_REF#refs/*/} \
         sagebionetworks/synapsepythonclient \
