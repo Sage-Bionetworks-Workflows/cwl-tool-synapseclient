@@ -32,12 +32,12 @@
 - job: store/store.yaml
   output:
     "stdout": {
-      "checksum": "sha1$804a8d86547df5deb13d99a8899dc83bfadf290c",
+      "checksum": "sha1$dda791b2e6ca496820fdc708a9d27e88d7838170",
       "class": "File",
       "location": "stdout.txt",
-      "size": 185
+      "size": 187
     }
-    "file_id": "syn22172494"
+    "file_id": "syn22254267"
   tool: ../cwl/synapse-store-tool.cwl
   label: synapse_store
   id: 3

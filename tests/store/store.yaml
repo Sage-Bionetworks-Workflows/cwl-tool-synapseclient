@@ -5,3 +5,6 @@ synapse_config:
 file_to_store:
   class: File
   path: 'test.txt'
+name: myfilename
+used: [syn22172371, syn22172494]
+executed: [syn22172494]

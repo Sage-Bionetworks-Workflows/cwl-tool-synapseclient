@@ -27,7 +27,7 @@ s:contributor:
 
 hints:
   DockerRequirement:
-    dockerPull: sagebionetworks/synapsepythonclient:v2.1.0
+    dockerPull: sagebionetworks/synapsepythonclient:v2.1.1
 
 inputs:
   - id: synapse_config
@@ -36,6 +36,12 @@ inputs:
     type: File
   - id: parentid
     type: string
+  - id: name
+    type: string?
+  - id: used
+    type: string[]?
+  - id: executed
+    type: string[]?
 
 requirements:
   - class: InlineJavascriptRequirement
@@ -48,6 +54,12 @@ arguments:
   - valueFrom: store
   - valueFrom: $(inputs.parentid)
     prefix: --parentId
+  - valueFrom: $(inputs.used)
+    prefix: --used
+  - valueFrom: $(inputs.executed)
+    prefix: --executed
+  - valueFrom: $(inputs.name)
+    prefix: --name
   - valueFrom: $(inputs.file_to_store.path)
 
 stdout: stdout.txt
