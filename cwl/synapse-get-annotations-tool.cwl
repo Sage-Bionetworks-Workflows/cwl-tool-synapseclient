@@ -43,7 +43,6 @@ requirements:
       - entryname: .synapseConfig
         entry: $(inputs.synapse_config)
 
-
 stdout: $(inputs.output_file_name)
      
 outputs:

@@ -1,0 +1,5 @@
+synapseid: syn22172371
+synapse_config:
+  class: File
+  path: '/tmp/.synapseConfig'
+expected_md5: 1ed35c6be3e9d9ebcd0759c622ec3661
