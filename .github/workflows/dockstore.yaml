@@ -1,8 +1,8 @@
 name: Dockstore
 
-on: [push]
-  # release:
-  #   types: [created]
+on:
+  release:
+    types: [created]
 
 jobs:
   deploy:
@@ -11,28 +11,32 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '11'
 
     - name: Set up Python
       uses: actions/setup-python@v1
       with:
         python-version: '3.7'
 
-    - name: Install Dockstore dependencies
+    - name: Install Dockstore
       run: |
-        add-apt-repository ppa:openjdk-r/ppa && apt-get update -q && apt install -y openjdk-11-jdk
         mkdir -p ~/bin
         curl -L -o ~/bin/dockstore https://github.com/dockstore/dockstore/releases/download/1.9.0/dockstore
         chmod +x ~/bin/dockstore
-        echo 'export PATH=~/bin:$PATH' >> ~/.bashrc
-        source ~/.bashrc
         mkdir -p ~/.dockstore
-        printf "token: 27389149dd692369de0465fcf2b48889e4258f645ffbff727f85e3d82d7ea708\nserver-url: https://dockstore.org/api\n" > ~/.dockstore/config
+        printf "token: ${{secrets.DOCKSTORE_TOKEN}}\nserver-url: https://dockstore.org/api\n" > ~/.dockstore/config
 
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pyyaml
-        python ../../dockstore.py ../../tests/test-descriptions.yaml \
-        ${GITHUB_REF#refs/heads/} \
+
+    - name: Run Dockstore Publish
+      run: |
+        export PATH=~/bin:$PATH
+        python utils/dockstore.py tests/test-descriptions.yaml \
+        ${GITHUB_REF#refs/*/} \
         sagebionetworks/synapsepythonclient \
         git@github.com:Sage-Bionetworks-Workflows/dockstore-tool-synapseclient.git
