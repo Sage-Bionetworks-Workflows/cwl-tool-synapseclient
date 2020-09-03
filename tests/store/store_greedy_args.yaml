@@ -1,0 +1,9 @@
+parentid: syn22172371
+synapse_config:
+  class: File
+  path: '/tmp/.synapseConfig'
+file_to_store:
+  class: File
+  path: 'test.txt'
+used: [syn22172371, syn22172494]
+executed: [syn22172494]
