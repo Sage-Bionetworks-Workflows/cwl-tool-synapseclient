@@ -45,16 +45,16 @@
 - job: store/store_greedy_args.yaml
   output:
     "stdout": {
-      "checksum": "sha1$dda791b2e6ca496820fdc708a9d27e88d7838170",
+      "checksum": "sha1$804a8d86547df5deb13d99a8899dc83bfadf290c",
       "class": "File",
       "location": "stdout.txt",
-      "size": 187
+      "size": 185
     }
-    "file_id": "syn22254267"
+    "file_id": "syn22172494"
   tool: ../cwl/synapse-store-tool.cwl
   label: synapse_store_greedy_arguments
   id: 3
-  doc: >
+  doc: >-
     Store file to Synapse where --used/--executed (which
     are greedy arguments) are the last optional arguments
 - job: query.yaml
