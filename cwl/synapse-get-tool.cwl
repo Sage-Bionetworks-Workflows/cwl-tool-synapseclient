@@ -17,7 +17,7 @@ s:author:
 
 hints:
   DockerRequirement:
-    dockerPull: sagebionetworks/synapsepythonclient:v2.1.1
+    dockerPull: sagebionetworks/synapsepythonclient:v2.2.0
 
 inputs:
   - id: synapse_config
