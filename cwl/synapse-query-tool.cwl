@@ -16,7 +16,7 @@ s:author:
 
 hints:
   DockerRequirement:
-    dockerPull: sagebionetworks/synapsepythonclient:v2.1.1
+    dockerPull: sagebionetworks/synapsepythonclient:v2.2.0
 
 requirements:
   - class: InitialWorkDirRequirement
