@@ -61,6 +61,7 @@ arguments:
   - valueFrom: $(inputs.name)
     prefix: --name
   - valueFrom: $(inputs.file_to_store.path)
+    prefix: --
 
 stdout: stdout.txt
 
