@@ -71,7 +71,7 @@ if __name__ == '__main__':
 
     #read in manifest
     manifest=pandas.read_csv(args.manifest_file,sep='\t',quoting=3,quotechar="'")
-    if "ROW_ID" in manfest.columns:
+    if "ROW_ID" in manifest.columns:
         manifest=manifest.drop(["ROW_ID","ROW_VERSION","ROW_ETAG"],axis=1)
 
     #join specimens and synids into data frame
