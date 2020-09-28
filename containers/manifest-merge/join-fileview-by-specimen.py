@@ -71,7 +71,8 @@ if __name__ == '__main__':
 
     #read in manifest
     manifest=pandas.read_csv(args.manifest_file,sep='\t',quoting=3,quotechar="'")
-    manifest=manifest.drop(["ROW_ID","ROW_VERSION","ROW_ETAG"],axis=1)
+    if "ROW_ID" in manfest.columns:
+        manifest=manifest.drop(["ROW_ID","ROW_VERSION","ROW_ETAG"],axis=1)
 
     #join specimens and synids into data frame
     specToSyn=pandas.DataFrame({args.key:args.values,'path': [os.path.basename(a) for a in args.filelist]})
