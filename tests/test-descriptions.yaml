@@ -53,10 +53,23 @@
     "file_id": "syn22172494"
   tool: ../cwl/synapse-store-tool.cwl
   label: synapse_store_greedy_arguments
-  id: 3
+  id: 4
   doc: >-
     Store file to Synapse where --used/--executed (which
     are greedy arguments) are the last optional arguments
+- job: create.yaml
+  output:
+    "stdout": {
+      "checksum": "sha1$1c35108ee957a953f9071b40eb9b874e4ffe64cd",
+      "class": "File",
+      "location": "stdout.txt",
+      "size": 41
+    }
+    "file_id": "syn23419632"
+  tool: ../cwl/synapse-create-tool.cwl
+  label: synapse_create
+  id: 5
+  doc: Create a folder on Synapse
 - job: query.yaml
   output:
     "query_result": {
@@ -67,13 +80,13 @@
     }
   tool: ../cwl/synapse-query-tool.cwl
   label: synapse_query
-  id: 4
+  id: 6
   doc: Query a table or file view in Synapse
 - job: sync/sync.yaml
   output: {}
   tool: ../cwl/synapse-sync-to-synapse-tool.cwl
   label: synapse_sync
-  id: 5
+  id: 7
   doc: Sync files into Synapse with a manifest
 - job: get-sts-token.yaml
   output:
@@ -88,5 +101,5 @@
     "basekey": Any
   tool: ../cwl/synapse-get-sts-tool.cwl
   label: synapse_get_sts
-  id: 6
+  id: 8
   doc: Get Synapse STS token
