@@ -1,0 +1,8 @@
+synapse_config:
+  class: File
+  path: '/tmp/.synapseConfig'
+
+parentid: syn22172371
+type: Folder
+name: mydirectory
+description: The best test directory there ever was
