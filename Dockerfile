@@ -1,4 +1,4 @@
-FROM sagebionetworks/synapsepythonclient:v2.3.0
+FROM sagebionetworks/synapsepythonclient:v2.3.1
 
 # This Dockerfile is used as a placeholder
 # dockstore tools are required to have a Dockerfile
