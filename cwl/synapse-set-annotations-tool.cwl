@@ -20,7 +20,7 @@ s:author:
 
 hints:
   DockerRequirement:
-    dockerPull: sagebionetworks/synapsepythonclient:v2.3.1
+    dockerPull: sagebionetworks/synapsepythonclient:v2.4.0
 
 inputs:
 
