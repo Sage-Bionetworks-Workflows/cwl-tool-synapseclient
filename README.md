@@ -1,5 +1,4 @@
 
-
 # Synapse command line CWL tools
 
 This repository contains versioned CWL tools for the Synapse command line client.  Other tools that utilize the `synapseclient` should live in other repositories.
@@ -38,6 +37,7 @@ that are generated from this template will need to have this service account
 added to it.
 
 ### Versioning
+
 Versioning is achieved through git tagging using
 [semantic versioning](https://semver.org/). Each push to master will generate an
 increment to the patch value, unless the commit contains the string '[skip-ci]'.
