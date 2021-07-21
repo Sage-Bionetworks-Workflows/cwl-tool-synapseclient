@@ -54,6 +54,7 @@ To do a minor or major release manually:
 1. Push the tag: `git push --tags`
 
 #### Branch Versioning
+
 Optionally, you can set up your repository for running the CI action on pushes
 to all branches, not just master. This is not the default behavior because it
 introduces complexity and requires that you use git in a certain way.
