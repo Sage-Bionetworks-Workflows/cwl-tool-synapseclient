@@ -33,7 +33,7 @@ jobs:
           OUTPUT_FILE=/tmp/.synapseConfig
           cat > "$OUTPUT_FILE" << EOM
           [authentication]
-          authtoken = "${{secrets.SYNAPSE_PAT}}"
+          authtoken = ${{secrets.SYNAPSE_PAT}}
           EOM
           chmod +x "$OUTPUT_FILE"
       - name: Test CWL
