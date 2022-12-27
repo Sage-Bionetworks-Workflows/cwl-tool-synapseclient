@@ -1,9 +1,12 @@
 name: CI
 
-on: [push, pull_request]
-  # push:
-  #   branches:
-  #     - master
+on: 
+  push:
+  pull_request:
+  # To prevent PAT from expiring
+  schedule:
+    - cron:  '0 17 1 * *'
+
 
 jobs:
 
