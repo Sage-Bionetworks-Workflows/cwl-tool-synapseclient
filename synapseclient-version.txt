@@ -1,1 +1,1 @@
-sagebionetworks/synapsepythonclient:v2.7.2
+sagebionetworks/synapsepythonclient:v3.1.1
