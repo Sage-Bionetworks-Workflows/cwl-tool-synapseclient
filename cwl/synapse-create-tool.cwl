@@ -1,82 +1,75 @@
 #!/usr/bin/env cwl-runner
-
 cwlVersion: v1.0
 class: CommandLineTool
 
-id: "synapse-create"
-label: "Synapse command line client subcommand for creating a project/folder."
+id: synapse-create
+label: Synapse command line client subcommand for creating a project/folder.
 
-baseCommand: 
-  - synapse
-  - create
+requirements:
+- class: InlineJavascriptRequirement
+- class: InitialWorkDirRequirement
+  listing:
+  - entryname: .synapseConfig
+    entry: $(inputs.synapse_config)
 
-$namespaces:
-  s: https://schema.org/
+inputs:
+- id: synapse_config
+  type: File
+- id: parentid
+  type: string?
+  inputBinding:
+    prefix: --parentId
+- id: name
+  type: string
+  inputBinding:
+    prefix: --name
+- id: description
+  type: string?
+  inputBinding:
+    prefix: --description
+- id: description_file
+  type: File?
+  inputBinding:
+    prefix: --descriptionFile
+- id: type
+  type:
+    type: enum
+    symbols:
+    - Project
+    - Folder
+  inputBinding:
+    position: 2
 
-s:author:
-  - class: s:Person
-    s:identifier: https://orcid.org/0000-0002-4621-1589
-    s:email: bruno.grande@sagebase.org
-    s:name: Bruno Grande
+outputs:
+- id: stdout
+  type: File
+  outputBinding:
+    glob: stdout.txt
+- id: file_id
+  type: string
+  outputBinding:
+    glob: stdout.txt
+    outputEval: $(self[0].contents.split("\n")[0].split(/(\s+)/)[4])
+    loadContents: true
+stdout: stdout.txt
+
+baseCommand:
+- synapse
+- create
 
 hints:
   DockerRequirement:
-    dockerPull: sagebionetworks/synapsepythonclient:v2.5.1
+    dockerPull: 
+      $include: ../synapseclient-version.txt
 
-inputs:
-  - id: synapse_config
-    type: File
-  - id: parentid
-    type: string?
-    inputBinding:
-      prefix: --parentId
-  - id: name
-    type: string
-    inputBinding:
-      prefix: --name
-  - id: description
-    type: string?
-    inputBinding:
-      prefix: --description
-  - id: description_file
-    type: File?
-    inputBinding:
-      prefix: --descriptionFile
-  - id: type
-    type:
-      type: enum
-      symbols: [Project, Folder]
-    inputBinding:
-      position: 2
+s:author:
+- class: s:Person
+  s:email: bruno.grande@sagebase.org
+  s:identifier: https://orcid.org/0000-0002-4621-1589
+  s:name: Bruno Grande
 
-requirements:
-  - class: InlineJavascriptRequirement
-  - class: InitialWorkDirRequirement
-    listing:
-      - entryname: .synapseConfig
-        entry: $(inputs.synapse_config)
+s:codeRepository: https://github.com/Sage-Bionetworks-Workflows/cwl-tool-synapseclient/
+s:license: https://spdx.org/licenses/Apache-2.0
 
-stdout: stdout.txt
-
-outputs:
-  - id: stdout
-    type: File
-    outputBinding:
-      glob: stdout.txt
-  - id: file_id
-    type: string
-    outputBinding:
-      glob: stdout.txt
-      loadContents: true
-      outputEval: $(self[0].contents.split("\n")[0].split(/(\s+)/)[4])
-
-# Example command and output of synapse create:
-#
-#   $ synapse create -parentId syn23344520 -name testDir Folder
-#   Created entity: syn23416766	testDir
-#
-# Steps to access the Synapse ID
-#
-#   1. Access line 1: "contents.split("\n")[0]"
-#   2. Split by whitespace: ".split(/(\s+)/)"
-#   3. Access the the 5th item: "[4]"
+$namespaces:
+  s: https://schema.org/

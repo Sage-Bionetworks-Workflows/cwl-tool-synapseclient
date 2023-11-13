@@ -1,84 +1,81 @@
 #!/usr/bin/env cwl-runner
-#
-
 cwlVersion: v1.0
-id: "synapse-get-sts"
-label: "Synapse Get STS Token Tool"
 class: CommandLineTool
-baseCommand: synapse
+
+id: synapse-get-sts
+label: Synapse Get STS Token Tool
+
+requirements:
+- class: InlineJavascriptRequirement
+- class: InitialWorkDirRequirement
+  listing:
+  - entryname: .synapseConfig
+    entry: $(inputs.synapse_config)
+
+inputs:
+- id: synapse_config
+  type: File
+- id: synapseid
+  type: string
+- id: permission
+  type: string
+
+outputs:
+- id: json_out
+  type: stdout
+- id: bucket
+  type: string
+  outputBinding:
+    glob: output.json
+    outputEval: $(JSON.parse(self[0].contents)['bucket'])
+    loadContents: true
+- id: basekey
+  type: string
+  outputBinding:
+    glob: output.json
+    outputEval: $(JSON.parse(self[0].contents)['baseKey'])
+    loadContents: true
+- id: accesskey_id
+  type: string
+  outputBinding:
+    glob: output.json
+    outputEval: $(JSON.parse(self[0].contents)['accessKeyId'])
+    loadContents: true
+- id: secret_accesskey
+  type: string
+  outputBinding:
+    glob: output.json
+    outputEval: $(JSON.parse(self[0].contents)['secretAccessKey'])
+    loadContents: true
+- id: session_token
+  type: string
+  outputBinding:
+    glob: output.json
+    outputEval: $(JSON.parse(self[0].contents)['sessionToken'])
+    loadContents: true
 stdout: output.json
 
-$namespaces:
-  s: https://schema.org/
-
-s:author:
-  - class: s:Person
-    s:identifier: https://orcid.org/0000-0002-5841-0198
-    s:email: thomas.yu@sagebionetworks.org
-    s:name: Thomas Yu
+baseCommand: synapse
+arguments:
+- valueFrom: get-sts-token
+- valueFrom: $(inputs.synapseid)
+- valueFrom: $(inputs.permission)
+- prefix: --output
+  valueFrom: json
 
 hints:
   DockerRequirement:
-    dockerPull: sagebionetworks/synapsepythonclient:v2.5.1
+    dockerPull: 
+      $include: ../synapseclient-version.txt
 
-inputs:
-  - id: synapse_config
-    type: File
-  - id: synapseid
-    type: string
-  - id: permission
-    type: string
+s:author:
+- class: s:Person
+  s:email: thomas.yu@sagebionetworks.org
+  s:identifier: https://orcid.org/0000-0002-5841-0198
+  s:name: Thomas Yu
 
-requirements:
-  InlineJavascriptRequirement: {}
-  InitialWorkDirRequirement:
-    listing:
-      - entryname: .synapseConfig
-        entry: $(inputs.synapse_config)
+s:codeRepository: https://github.com/Sage-Bionetworks-Workflows/cwl-tool-synapseclient/
+s:license: https://spdx.org/licenses/Apache-2.0
 
-arguments:
-  - valueFrom: get-sts-token
-  - valueFrom: $(inputs.synapseid)
-  - valueFrom: $(inputs.permission)
-  - valueFrom: json
-    prefix: --output
-
-
-outputs:
-  - id: json_out
-    type: stdout
-
-  - id: bucket
-    type: string
-    outputBinding:
-      glob: output.json
-      loadContents: true
-      outputEval: $(JSON.parse(self[0].contents)['bucket'])
-
-  - id: basekey
-    type: string
-    outputBinding:
-      glob: output.json
-      loadContents: true
-      outputEval: $(JSON.parse(self[0].contents)['baseKey'])
-
-  - id: accesskey_id
-    type: string
-    outputBinding:
-      glob: output.json
-      loadContents: true
-      outputEval: $(JSON.parse(self[0].contents)['accessKeyId'])
-    
-  - id: secret_accesskey
-    type: string
-    outputBinding:
-      glob: output.json
-      loadContents: true
-      outputEval: $(JSON.parse(self[0].contents)['secretAccessKey'])
-
-  - id: session_token
-    type: string
-    outputBinding:
-      glob: output.json
-      loadContents: true
-      outputEval: $(JSON.parse(self[0].contents)['sessionToken'])
+$namespaces:
+  s: https://schema.org/

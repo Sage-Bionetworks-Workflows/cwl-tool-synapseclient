@@ -1,42 +1,47 @@
 #!/usr/bin/env cwl-runner
+cwlVersion: v1.0
 class: CommandLineTool
+
 id: synapse-query-tool
 label: synapse-query-tool
-cwlVersion: v1.0
+
+requirements:
+- class: InitialWorkDirRequirement
+  listing:
+  - entryname: .synapseConfig
+    entry: $(inputs.synapse_config)
+
+inputs:
+  query:
+    doc: query
+    type: string
+    inputBinding:
+      prefix: query
+      position: 1
+  synapse_config:
+    doc: synapseConfig file
+    type: File
+
+outputs:
+- id: query_result
+  type: stdout
+stdout: query_result.tsv
+
 baseCommand: synapse
-
-$namespaces:
-  s: https://schema.org/
-
-s:author:
-  - class: s:Person
-    s:identifier: https://orcid.org/0000-0002-5841-0198
-    s:email: thomas.yu@sagebionetworks.org
-    s:name: Thomas Yu
 
 hints:
   DockerRequirement:
-    dockerPull: sagebionetworks/synapsepythonclient:v2.5.1
+    dockerPull: 
+      $include: ../synapseclient-version.txt
 
-requirements:
-  - class: InitialWorkDirRequirement
-    listing:
-      - entryname: .synapseConfig
-        entry: $(inputs.synapse_config)
+s:author:
+- class: s:Person
+  s:email: thomas.yu@sagebionetworks.org
+  s:identifier: https://orcid.org/0000-0002-5841-0198
+  s:name: Thomas Yu
 
-inputs:
-  synapse_config:
-    type: File
-    doc: synapseConfig file
-  query:
-    type: string
-    inputBinding:
-      position: 1
-      prefix: query
-    doc: query
+s:codeRepository: https://github.com/Sage-Bionetworks-Workflows/cwl-tool-synapseclient/
+s:license: https://spdx.org/licenses/Apache-2.0
 
-outputs:
-  - id: query_result
-    type: stdout
-
-stdout: query_result.tsv
+$namespaces:
+  s: https://schema.org/
